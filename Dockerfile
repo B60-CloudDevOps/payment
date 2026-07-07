@@ -7,7 +7,6 @@ RUN apk add --no-cache \
     linux-headers
 RUN adduser -D -h /app roboshop
 WORKDIR /app
-USER roboshop
 COPY payment.ini payment.py rabbitmq.py requirements.txt ./
 RUN pip3 install --no-cache-dir --user -r requirements.txt
 ENTRYPOINT ["/app/.local/bin/uwsgi", "--ini", "payment.ini"]
