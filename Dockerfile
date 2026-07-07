@@ -9,5 +9,6 @@ RUN adduser -D -h /app roboshop
 WORKDIR /app
 COPY payment.ini payment.py rabbitmq.py requirements.txt ./
 RUN pip3 install --no-cache-dir --user -r requirements.txt
-ENTRYPOINT ["/app/.local/bin/uwsgi", "--ini", "payment.ini"]
-EXPOSE 8080
+CMD sleep 1000
+# ENTRYPOINT ["/app/.local/bin/uwsgi", "--ini", "payment.ini"]
+# EXPOSE 8080
