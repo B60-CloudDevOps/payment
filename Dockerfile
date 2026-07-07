@@ -10,5 +10,5 @@ WORKDIR /app
 USER roboshop
 COPY payment.ini payment.py rabbitmq.py requirements.txt ./
 RUN pip3 install --no-cache-dir --user -r requirements.txt
-ENTRYPOINT ["uwsgi", "--ini", "payment.ini"]
+ENTRYPOINT ["/app/.local/bin/uwsgi", "--ini", "payment.ini"]
 EXPOSE 8080
