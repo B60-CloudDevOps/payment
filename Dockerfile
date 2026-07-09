@@ -1,4 +1,5 @@
 FROM docker.io/library/python:3.13-alpine
+RUN  mkdir /app
 WORKDIR /app
 COPY payment.ini payment.py rabbitmq.py requirements.txt ./
 RUN apk add --no-cache gcc musl-dev linux-headers
