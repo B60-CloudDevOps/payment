@@ -1,7 +1,7 @@
 FROM docker.io/library/python:3.12-slim
 WORKDIR /app
 COPY payment.ini payment.py rabbitmq.py requirements.txt ./
-RUN apk add --no-cache \
+RUN dnf install -y \
     gcc \
     musl-dev \
     python3-dev \
