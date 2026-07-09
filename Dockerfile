@@ -1,12 +1,8 @@
-FROM docker.io/library/python:3.12-slim
+FROM docker.io/library/python:3.13-alpine
 WORKDIR /app
 COPY payment.ini payment.py rabbitmq.py requirements.txt ./
-RUN dnf install -y \
-    gcc \
-    musl-dev \
-    python3-dev \
-    linux-headers
-# Install build dependencies
-RUN pip install --no-cache-dir -r requirements.txt -t /app/
+RUN apk add --no-cache gcc musl-dev linux-headers
+
+RUN pip3 install --no-cache-dir -r requirements.txt
 
 ENTRYPOINT ["/app/.local/bin/uwsgi", "--ini", "payment.ini"]
