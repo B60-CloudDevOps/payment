@@ -4,5 +4,6 @@ COPY payment.ini payment.py rabbitmq.py requirements.txt ./
 RUN apk add --no-cache gcc musl-dev linux-headers
 
 RUN pip3 install --no-cache-dir -r requirements.txt
+RUN pip3 install --no-cache-dir uwsgi
 
-ENTRYPOINT ["/app/.local/bin/uwsgi", "--ini", "payment.ini"]
+ENTRYPOINT ["uwsgi", "--ini", "payment.ini"]
