@@ -1,5 +1,5 @@
 # All the actions will be executed only if the commit happens on main branch
-name: CI-Non-MAIN-Branch
+name: CI-Branch
 on:
   push:
     branches-ignore:
@@ -7,17 +7,5 @@ on:
   workflow_dispatch:
 
 jobs:
-  scan:
-    runs-on: self-hosted
-    steps:
-      - uses: actions/checkout@v4
-      - name: Running SAST Scan
-        run: echo "Running Static Application Security Testing" 
-
-  test:
-    runs-on: self-hosted
-    needs: scan
-    steps:
-      - uses: actions/checkout@v4
-      - name: Running Test Cases
-        run: echo "Running Unit + Integration Testing"
+  reuse:
+    uses: B60-CloudDevOps/roboshop-github-actions/.github/workflows/ci-branch.yml@main

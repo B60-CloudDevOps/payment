@@ -9,3 +9,5 @@ on:
 jobs:
   reuse:
     uses: B60-CloudDevOps/roboshop-github-actions/.github/workflows/ci-main.yml@main
+    with:
+      app_type: python
